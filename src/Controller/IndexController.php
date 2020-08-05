@@ -1,13 +1,13 @@
 <?php
 
-namespace PrestaShop\Module\Kb_Sample\Controller;
+namespace PrestaShop\Module\Kb_Config\Controller;
 
-use PrestaShop\Module\Kb_Sample\Entity\SampleClass;
+use PrestaShop\Module\Kb_Config\Entity\SampleClass;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
-use PrestaShop\Module\Kb_Sample\Form\SampleFormType;
+use PrestaShop\Module\Kb_Config\Form\SampleFormType;
 
 class IndexController extends FrameworkBundleAdminController
 {
@@ -24,7 +24,7 @@ class IndexController extends FrameworkBundleAdminController
             ->getRepository(SampleClass::class)
             ->findAll();
 
-        return $this->render('@Modules/kb_sample/views/templates/admin/index/index.html.twig', ['records' => $records]);
+        return $this->render('@Modules/kb_config/views/templates/admin/index/index.html.twig', ['records' => $records]);
     }
 
     /**
@@ -47,10 +47,10 @@ class IndexController extends FrameworkBundleAdminController
 
             $this->addFlash("notice", "Aukcja została dodana");
 
-            return $this->render('@Modules/kb_sample/views/templates/admin/index/index.html.twig');
+            return $this->render('@Modules/kb_config/views/templates/admin/index/index.html.twig');
         }
 
 
-        return $this->render('@Modules/kb_sample/views/templates/admin/index/add.html.twig', ["form" => $form->createView()]);
+        return $this->render('@Modules/kb_config/views/templates/admin/index/add.html.twig', ["form" => $form->createView()]);
     }
 }

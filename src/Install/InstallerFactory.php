@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace PrestaShop\Module\Kb_Sample\Install;
+namespace PrestaShop\Module\Kb_Config\Install;
 
 class InstallerFactory
 {

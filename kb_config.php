@@ -15,17 +15,17 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-use PrestaShop\Module\Kb_Sample\Install\InstallerFactory;
+use PrestaShop\Module\Kb_Config\Install\InstallerFactory;
 use PrestaShop\PrestaShop\Adapter\SymfonyContainer;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 require_once __DIR__.'/vendor/autoload.php';
 
-class Kb_Sample extends Module
+class Kb_Config extends Module
 {
     public function __construct()
     {
-        $this->name = 'kb_sample';
+        $this->name = 'kb_config';
         $this->author = 'Konrad Babiarz';
         $this->tab = 'others';
         $this->version = '1.0.0';
@@ -65,12 +65,12 @@ class Kb_Sample extends Module
     {
         $sfContainer = SymfonyContainer::getInstance();
         return $sfContainer->get('twig')
-            ->render('@Modules/kb_sample/views/templates/admin/menu.html.twig', [
+            ->render('@Modules/kb_config/views/templates/admin/menu.html.twig', [
                 'in_symfony' => $this->isSymfonyContext(),
                 'categ_title' => 'Framework',
                 'ctr_title' => 'Configure',
                 'ctr_url' => $sfContainer->get('router')->generate(
-                    'kb_sample_index',
+                    'kb_config_index',
                     array(),
                     UrlGeneratorInterface::ABSOLUTE_URL
                 ),

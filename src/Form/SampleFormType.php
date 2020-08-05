@@ -1,8 +1,8 @@
 <?php
 
-namespace PrestaShop\Module\Kb_Sample\Form;
+namespace PrestaShop\Module\Kb_Config\Form;
 
-use PrestaShop\Module\Kb_Sample\Entity\SampleClass;
+use PrestaShop\Module\Kb_Config\Entity\SampleClass;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;

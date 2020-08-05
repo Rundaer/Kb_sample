@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace PrestaShop\Module\Kb_Sample\Install;
+namespace PrestaShop\Module\Kb_Config\Install;
 
 use Db;
 use Module;
@@ -60,7 +60,7 @@ class Installer
     private function installDatabase(): bool
     {
         $queries = [
-            'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'kb_sample` (
+            'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'kb_config` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
               `description` text NOT NULL,
               PRIMARY KEY (`id`)
@@ -78,7 +78,7 @@ class Installer
     private function uninstallDatabase(): bool
     {
         $queries = [
-            'DROP TABLE IF EXISTS `'._DB_PREFIX_.'kb_sample`',
+            'DROP TABLE IF EXISTS `'._DB_PREFIX_.'kb_config`',
         ];
 
         return $this->executeQueries($queries);

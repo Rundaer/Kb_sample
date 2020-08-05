@@ -1,11 +1,11 @@
 <?php
 
-namespace PrestaShop\Module\Kb_Sample\Entity;
+namespace PrestaShop\Module\Kb_Config\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="ps_kb_sample")
+ * @ORM\Table(name="ps_kb_config")
  * @ORM\Entity()
  */
 class SampleClass

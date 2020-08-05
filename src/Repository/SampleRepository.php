@@ -1,8 +1,8 @@
 <?php
 
-namespace PrestaShop\Module\Kb_Sample\Repository;
+namespace PrestaShop\Module\Kb_Config\Repository;
 
-use PrestaShop\Module\Kb_Sample\Entity\SampleClass;
+use PrestaShop\Module\Kb_Config\Entity\SampleClass;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
