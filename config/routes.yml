@@ -1,0 +1,14 @@
+# Routings
+kb_sample_index:
+    path:     /kb_sample/index
+    methods:  [GET]
+    defaults:
+        _controller: 'PrestaShop\Module\Kb_Sample\Controller\IndexController::indexAction'
+
+# Routings
+kb_sample_add:
+    path:     /kb_sample/add
+    methods:  [GET, POST]
+    defaults:
+        _controller: 'PrestaShop\Module\Kb_Sample\Controller\IndexController::addAction'
+

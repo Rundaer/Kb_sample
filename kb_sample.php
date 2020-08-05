@@ -11,11 +11,13 @@
 
 declare(strict_types=1);
 
-use PrestaShop\Module\Kb_Sample\Install\InstallerFactory;
-
 if (!defined('_PS_VERSION_')) {
     exit;
 }
+
+use PrestaShop\Module\Kb_Sample\Install\InstallerFactory;
+use PrestaShop\PrestaShop\Adapter\SymfonyContainer;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 require_once __DIR__.'/vendor/autoload.php';
 
@@ -25,24 +27,23 @@ class Kb_Sample extends Module
     {
         $this->name = 'kb_sample';
         $this->author = 'Konrad Babiarz';
+        $this->tab = 'others';
         $this->version = '1.0.0';
-        $this->ps_versions_compliancy = ['min' => '1.7.6.0', 'max' => _PS_VERSION_];
+        $this->ps_versions_compliancy = [
+            'min' => '1.7.5.0',
+            'max' => _PS_VERSION_
+        ];
 
         parent::__construct();
-
-        $this->displayName = $this->l('Sample module');
-        $this->description = $this->l('Sample description for module');
+        $this->displayName = $this->l('Sample Back Office Controller');
+        $this->description = $this->l('PrestaShop 1.7 sample Back Office controller with Symfony and Twig');
     }
 
     public function install()
     {
-        if (!parent::install()) {
-            return false;
-        }
-
         $installer = InstallerFactory::create();
 
-        return $installer->install($this);
+        return parent::install() && $installer->install($this);
     }
 
     public function uninstall()
@@ -50,5 +51,29 @@ class Kb_Sample extends Module
         $installer = InstallerFactory::create();
 
         return $installer->uninstall() && parent::uninstall();
+    }
+
+    public function hookDisplayBackOfficeHeader()
+    {
+        // Use addCss : registerStylesheet is only for front controller.
+        $this->context->controller->addCss(
+            $this->_path.'views/css/admin.css'
+        );
+    }
+
+    public function hookdisplayAdminNavBarBeforeEnd($params)
+    {
+        $sfContainer = SymfonyContainer::getInstance();
+        return $sfContainer->get('twig')
+            ->render('@Modules/kb_sample/views/templates/admin/menu.html.twig', [
+                'in_symfony' => $this->isSymfonyContext(),
+                'categ_title' => 'Framework',
+                'ctr_title' => 'Configure',
+                'ctr_url' => $sfContainer->get('router')->generate(
+                    'kb_sample_index',
+                    array(),
+                    UrlGeneratorInterface::ABSOLUTE_URL
+                ),
+            ]);
     }
 }

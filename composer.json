@@ -1,5 +1,6 @@
 {
-    "name": "kb_modules/kb_sample",
+    "name": "konrad-babiarz/kb_sample",
+    "description": "PrestaShop 1.7 sample Back Office controller with Symfony and Twig",
     "authors": [
         {
             "name": "Konrad Babiarz",
@@ -11,7 +12,8 @@
         "PrestaShop\\Module\\Kb_Sample\\": "src/"
       },
       "config": {
-        "prepend-autoloader": false
+        "prepend-autoloader": false,
+        "preferred-install": "dist"
       },
       "type": "prestashop-module"
     }

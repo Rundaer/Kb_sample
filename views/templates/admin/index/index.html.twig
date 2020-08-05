@@ -1,0 +1,39 @@
+{#*
+ * 2007-2019 Frédéric BENOIST
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@prestashop.com so we can send you a copy immediately.
+ *
+ *  @author    Frédéric BENOIST
+ *  @copyright 2013-2019 Frédéric BENOIST <https://www.fbenoist.com/>
+ *  @license   http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ *#}
+{% extends '@Modules/kb_sample/views/templates/admin/base.html.twig' %}
+
+{% block body %}
+    {% block nav %}
+        {% include '@Modules/kb_sample/views/templates/admin/index/nav/nav.html.twig' %}
+    {% endblock %}
+    <div class="tab-content">
+        <div id="cat1" class="container tab-pane active"><br>
+            <h3>HOME</h3>
+            <ul>
+            {% for record in records %}
+                <li>{{ record.description }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div id="cat2" class="container tab-pane fade"><br>
+            <h3>Menu 1</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+    </div>
+    
+{% endblock %}

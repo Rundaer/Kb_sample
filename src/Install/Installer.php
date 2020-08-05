@@ -60,11 +60,10 @@ class Installer
     private function installDatabase(): bool
     {
         $queries = [
-            'CREATE TABLE IF NOT EXISTS `kb_sample` (
-              `id_sample` int(11) NOT NULL AUTO_INCREMENT,
-              `sample_text` text NOT NULL,
-              `filename` varchar(64) NOT NULL,
-              PRIMARY KEY (`id_sample`)
+            'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'kb_sample` (
+              `id` int(11) NOT NULL AUTO_INCREMENT,
+              `description` text NOT NULL,
+              PRIMARY KEY (`id`)
             ) ENGINE='._MYSQL_ENGINE_.' DEFAULT CHARSET=utf8;',
         ];
 
@@ -79,7 +78,7 @@ class Installer
     private function uninstallDatabase(): bool
     {
         $queries = [
-            'DROP TABLE IF EXISTS `'._DB_PREFIX_.'order_signature`',
+            'DROP TABLE IF EXISTS `'._DB_PREFIX_.'kb_sample`',
         ];
 
         return $this->executeQueries($queries);
@@ -97,6 +96,8 @@ class Installer
         // Hooks available in the order view page.
         $hooks = [
             'displayHome',
+            'displayAdminNavBarBeforeEnd',
+            'displayBackOfficeHeader',
         ];
 
         return (bool) $module->registerHook($hooks);
