@@ -5,10 +5,21 @@ kb_config_index:
     defaults:
         _controller: 'PrestaShop\Module\Kb_Config\Controller\IndexController::indexAction'
 
-# Routings
 kb_config_add:
     path:     /kb_config/add
     methods:  [GET, POST]
     defaults:
         _controller: 'PrestaShop\Module\Kb_Config\Controller\IndexController::addAction'
+
+kb_config_edit:
+    path:     /kb_config/edit/{id}
+    methods:  [GET, POST]
+    defaults:
+        _controller: 'PrestaShop\Module\Kb_Config\Controller\IndexController::editAction'
+
+kb_config_delete:
+    path:     /kb_config/delete/{id}
+    methods:  [GET, POST]
+    defaults:
+        _controller: 'PrestaShop\Module\Kb_Config\Controller\IndexController::deleteAction'
 

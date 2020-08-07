@@ -2,21 +2,21 @@
 
 namespace PrestaShop\Module\Kb_Config\Repository;
 
-use PrestaShop\Module\Kb_Config\Entity\SampleClass;
+use PrestaShop\Module\Kb_Config\Entity\CategoryProducts;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Sample|null find($id, $lockMode = null, $lockVersion = null)
- * @method Sample|null findOneBy(array $criteria, array $orderBy = null)
- * @method Sample[]    findAll()
- * @method Sample[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method CategoryProducts|null find($id, $lockMode = null, $lockVersion = null)
+ * @method CategoryProducts|null findOneBy(array $criteria, array $orderBy = null)
+ * @method CategoryProducts[]    findAll()
+ * @method CategoryProducts[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SampleRepository extends ServiceEntityRepository
+class CategoryProductsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, SampleClass::class);
+        parent::__construct($registry, CategoryProducts::class);
     }
 
     // /**

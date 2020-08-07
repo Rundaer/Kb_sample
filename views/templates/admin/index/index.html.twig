@@ -22,13 +22,34 @@
         {% include '@Modules/kb_config/views/templates/admin/index/nav/nav.html.twig' %}
     {% endblock %}
     <div class="tab-content">
+
+        <div class='d-flex flex-row action-buttons'>
+            {% if records|length < 2 %}
+            <a class="btn btn-primary" href="{{ path("kb_config_add") }}" role="button">Dodaj nowy blok</a>
+            {% endif %}
+        </div>
+
+        {# Tab content #}
         <div id="cat1" class="container tab-pane active"><br>
-            <h3>HOME</h3>
-            <ul>
             {% for record in records %}
-                <li>{{ record.description }}</li>
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-content-center">
+                    {{ record.title }}
+                     <div class="action-button-list d-flex flex-row justify-content-around actions">
+                        <a class="btn btn-secondary" href="{{ url("kb_config_edit", {"id": record.id}) }}">Edytuj</a>
+                        <a class="btn btn-danger" href="{{ url("kb_config_delete", {"id": record.id}) }}">Usuń</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for product in record.products %}
+                            <li class="list-group-item">{{product.product_name}}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href="{{ record.link }}" class="card-link">{{ record.link }}</a>
+                </div>
+            </div>
             {% endfor %}
-            </ul>
         </div>
         <div id="cat2" class="container tab-pane fade"><br>
             <h3>Menu 1</h3>
